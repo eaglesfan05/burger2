@@ -15,7 +15,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 var connection = mysql.createConnection({
-    host: "localhost",
+    host: "127.0.0.1",
     port: 8080,
     user: "root",
     password: "root",
@@ -30,6 +30,16 @@ connection.connect(function(err){
     console.log("connected as id " + connection.threadId);
 });
 
+// Serve index.handlebars to the root route.
+app.get("/", function(req, res) {
+    connection.query("SELECT * FROM burger;", function(err, data) {
+      if (err) {
+        console.log(err)
+      }
+  
+      res.render("index", { burger: data });
+    });
+  });
 
 
 // Start our server so that it can begin listening to client requests.

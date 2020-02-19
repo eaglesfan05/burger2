@@ -1,0 +1,40 @@
+#burgerdiv {
+    display: inline;
+}
+.stuff {
+    align-items: center;
+}
+
+.section{
+    margin: 0;
+}
+img {
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+      
+}
+.burgers-here{
+    display: inline;
+}
+.imageholder{
+    height: 250px;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+}
+#container{
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+html {
+    background-color: #FFB228;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    /* text-align: center; */
+}
