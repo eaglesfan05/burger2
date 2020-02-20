@@ -7,27 +7,30 @@
 
     <div class="section stuff">
         <ul>
-        {{#each burgers}}
-        <li>
-        {{!-- <div class="level">
+            {{#each burgers}}
+            <li>
+                {{!-- <div class="level">
             <div class="level=item burgers-here"> --}}
-                
-             <p> {{ this.burger_name }}</p>  
+
+                <p> {{ this.burger_name }}</p>
 
 
-            {{!-- </div> --}}
-            {{!-- <div class="level=item devoured"></div> --}}
-        {{!-- </div> --}}
-        </li>
-        {{/each}}
+                {{!-- </div> --}}
+                {{!-- <div class="level=item devoured"></div> --}}
+                {{!-- </div> --}}
+            </li>
+            {{/each}}
         </ul>
         <div class="container">
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <h1>What kind of Burger do you want?</h1>
-                    <input type="text" id="burger_name">
-                    <button class="button is-normal" id="add-burger">Add a burger</button>
+                    <form action="/" method="POST">
+                        <h1>What kind of Burger do you want?</h1>
+                        <input type="text" id="burger_name">
+                        <button class="button is-normal" id="add-burger">Add a burger</button>
+                    </form>
+
                 </div>
                 <div class="col-4"></div>
             </div>
