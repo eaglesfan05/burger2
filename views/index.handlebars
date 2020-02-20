@@ -1,23 +1,40 @@
-  <div class="content">
+<div class="content">
 
     <div class="container imageholder">
-      <img src="assets/images/chefburger.jpg" alt="burger pic" id="burger">
+        <img src="assets/images/chefburger.jpg" alt="burger pic" id="burger">
     </div>
 
 
     <div class="section stuff">
-      <div class="level">
-        <div class="level=item burgers-here"></div>
-        <div class=
-        "level=item devoured"></div>
-      </div>
+        <ul>
+        {{#each burgers}}
+        <li>
+        {{!-- <div class="level">
+            <div class="level=item burgers-here"> --}}
+                
+             <p> {{ this.burger_name }}</p>  
 
-      <div class="container">
-        <h1>What kind of Burger do you want?</h1>
-        <input type="text" id="burger_name">
-        <button class="button is-normal" id="add-burger">Add a burger</button>
-      </div>
+
+            {{!-- </div> --}}
+            {{!-- <div class="level=item devoured"></div> --}}
+        {{!-- </div> --}}
+        </li>
+        {{/each}}
+        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <h1>What kind of Burger do you want?</h1>
+                    <input type="text" id="burger_name">
+                    <button class="button is-normal" id="add-burger">Add a burger</button>
+                </div>
+                <div class="col-4"></div>
+            </div>
+
+
+        </div>
 
 
     </div>
-  </div>
+</div>

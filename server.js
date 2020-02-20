@@ -22,16 +22,19 @@ if (process.env.JAWSDB_URL) {
 
   connection = mysql.createConnection({
     host: "127.0.0.1",
-    port: 8080,
+    port: 3306,
     user: "root",
     password: "root",
     database: "burgers_db"
   });
 };
 
-connection.connect(function (err) {
+console.log(connection);
+
+connection.connect(function(err) {
   if (err) {
-    console.log("error connecting", +err.stack);
+    console.log("error connecting", + err.stack);
+    throw err;
     return;
   }
   console.log("connected as id " + connection.threadId);
@@ -46,7 +49,19 @@ app.get("/", function (req, res) {
 
     res.render("index", { burger: data });
   });
+  
 });
+
+app.post("/api/burgers", function(req, res){
+  connection.query("INSERT INTO burger (burger_name) VALUES (?)", [req.body.burger_name], function (err, result){
+    if (err){
+      return res.status(500).end();
+    } else{
+      res.json({ id: result.insertId });
+      console.log({ id: result.insertId });
+    } 
+  })
+})
 
 
 // Start our server so that it can begin listening to client requests.
