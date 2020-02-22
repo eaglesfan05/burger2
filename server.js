@@ -42,29 +42,44 @@ connection.connect(function(err) {
 
 // Serve index.handlebars to the root route.
 app.get("/", function (req, res) {
+  console.log("making query");
   connection.query("SELECT * FROM burger;", function (err, data) {
     if (err) {
       console.log(err)
     }
-
+    console.log(data)
     res.render("index", { burger: data });
   });
-  
 });
 
-app.post("/", function(req, res){
+
+app.post("/api/burger", function(req, res){
   connection.query("INSERT INTO burger (burger_name) VALUES (?)", [req.body.burger_name], function (err, result){
     if (err){
       return res.status(500).end();
     } else{
-      res.json({ id: result.insertId });
+      // res.json({ id: result.insertId });
       console.log({ id: result.insertId });
-      res.redirect("/");
+
+      // res.send("/");
+      res.send('/');
     } 
   })
 })
 
 
+app.put("/api/burger/:id", function(req, res){
+  connection.query("UPDATE burger SET devoured = 1 WHERE id = ?", [req.params.id], function (err, result){
+    if (err){
+      console.log(err);
+    } else if (result.changedRows === 0) {
+      return res.status(200).end();
+      
+    }else{
+      res.send('/')
+    }
+  })
+})
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {
   // Log (server-side) when our server has started

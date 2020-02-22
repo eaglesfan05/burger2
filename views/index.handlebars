@@ -7,18 +7,32 @@
 
     <div class="section stuff">
         <ul>
-            {{#each burgers}}
+            {{#each burger}}
+            {{#unless this.devoured}}
             <li>
                 {{!-- <div class="level">
             <div class="level=item burgers-here"> --}}
 
                 <p> {{ this.burger_name }}</p>
 
-
+                <button data-burgerid="{{this.id}}" class="devoured">Devour Now?</button>
                 {{!-- </div> --}}
-                {{!-- <div class="level=item devoured"></div> --}}
+                {{!-- <div class="level=item devoured">
+
+
+                </div> --}}
                 {{!-- </div> --}}
             </li>
+          
+            {{/unless }}
+            {{/each}}
+
+            {{#each burger}}
+                {{#if this.devoured}}
+                    <li>
+                        <span>{{this.burger_name}}</span>
+                    </li>
+                {{/if}}
             {{/each}}
         </ul>
         <div class="container">
