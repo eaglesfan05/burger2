@@ -40,7 +40,7 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-// Serve index.handlebars to the root route.
+// Serve index.handlebars to the root route. shows all burgers in database
 app.get("/", function (req, res) {
   console.log("making query");
   connection.query("SELECT * FROM burger;", function (err, data) {
@@ -52,7 +52,7 @@ app.get("/", function (req, res) {
   });
 });
 
-
+// adds new burger//
 app.post("/api/burger", function(req, res){
   connection.query("INSERT INTO burger (burger_name) VALUES (?)", [req.body.burger_name], function (err, result){
     if (err){
@@ -67,7 +67,7 @@ app.post("/api/burger", function(req, res){
   })
 })
 
-
+//updates burger devoured default status to true//
 app.put("/api/burger/:id", function(req, res){
   connection.query("UPDATE burger SET devoured = 1 WHERE id = ?", [req.params.id], function (err, result){
     if (err){
@@ -80,7 +80,7 @@ app.put("/api/burger/:id", function(req, res){
     }
   })
 })
-
+//deletes all burgers from tables.. truncate deletes and recreates database//
 app.delete("/api/burger/delete", function(req,res){
   connection.query("TRUNCATE TABLE burger", function(err, data){
     if (err){
