@@ -6,52 +6,70 @@
 
 
     <div class="section stuff">
-        <ul>
-            {{#each burger}}
-            {{#unless this.devoured}}
-            <li>
-                {{!-- <div class="level">
+        <div class="level">
+            <div class="level-left">
+                <ul>
+
+                    {{#each burger}}
+                    {{#unless this.devoured}}
+                    <li>
+                        {{!-- <div class="level">
             <div class="level=item burgers-here"> --}}
 
-                <p> {{ this.burger_name }}</p>
+                        <p> {{ this.burger_name }}</p>
 
-                <button data-burgerid="{{this.id}}" class="devoured">Devour Now?</button>
-                {{!-- </div> --}}
-                {{!-- <div class="level=item devoured">
+                        <button data-burgerid="{{this.id}}" class="devoured">Devour Now?</button>
+                        {{!-- </div> --}}
+                        {{!-- <div class="level=item devoured">
 
 
                 </div> --}}
-                {{!-- </div> --}}
-            </li>
-          
-            {{/unless }}
-            {{/each}}
-
-            {{#each burger}}
-                {{#if this.devoured}}
-                    <li>
-                        <span>{{this.burger_name}}</span>
+                        {{!-- </div> --}}
                     </li>
-                {{/if}}
-            {{/each}}
-        </ul>
-        <div class="container">
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-4">
-                    <form action="/" method="POST">
-                        <h1>What kind of Burger do you want?</h1>
-                        <input type="text" id="burger_name">
-                        <button class="button is-normal" id="add-burger">Add a burger</button>
-                    </form>
 
-                </div>
-                <div class="col-4"></div>
+                    {{/unless }}
+                    {{/each}}
+                </ul>
             </div>
 
+            <div class="level-right">
+                <ul>
+                    {{#each burger}}
+                    {{#if this.devoured}}
+                    <li>
+                        <p>
+                            {{this.burger_name}} Was Devoured
+                        </p>
+                    </li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
 
         </div>
 
 
     </div>
+</div>
+<div class = "content">
+<div class="container">
+    <div class="row">
+        
+        <div class="col-8">
+            <form action="/" method="POST">
+                <h1>What kind of Burger do you want?</h1>
+                <input type="text" id="burger_name">
+                <button class="button is-normal" id="add-burger">Add a burger</button>
+                <button class = "button is-normal" id = "deleteburger">Delete All the burgers!!!</button>
+            </form>
+            
+        </div>
+     
+    </div>
+
+
+</div>
+</div>
+
+</div>
 </div>

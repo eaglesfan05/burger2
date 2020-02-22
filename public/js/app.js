@@ -84,6 +84,17 @@ $(".devoured").on("click", function(event){
 //     );
 
 })
+$("#deleteburger").on("click", function(event){
+  event.preventDefault();
+  $.ajax({
+    url:"/api/burger/delete",
+    method: "DELETE"
+  }).then(function(){
+   
+    location.reload();
+  })
+})
+
 
 });
 

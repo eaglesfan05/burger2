@@ -80,6 +80,16 @@ app.put("/api/burger/:id", function(req, res){
     }
   })
 })
+
+app.delete("/api/burger/delete", function(req,res){
+  connection.query("TRUNCATE TABLE burger", function(err, data){
+    if (err){
+      console.log(err)
+    } else {
+      res.send('/')
+    }
+  })
+})
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {
   // Log (server-side) when our server has started
